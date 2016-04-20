@@ -1,0 +1,165 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "Styledown",
+        "source": "README.md",
+        "expand": true,
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Notice",
+            "depth": 2,
+            "id": "notice"
+          },
+          {
+            "title": "CLI usage",
+            "depth": 2,
+            "id": "cli-usage"
+          },
+          {
+            "title": "Thanks",
+            "depth": 2,
+            "id": "thanks"
+          }
+        ]
+      },
+      {
+        "title": "Users guide",
+        "sections": [
+          {
+            "title": "API",
+            "source": "docs/api.md",
+            "url": "api.html",
+            "slug": "api",
+            "headings": [
+              {
+                "title": "parse",
+                "depth": 2,
+                "id": "parse"
+              },
+              {
+                "title": "parseFiles",
+                "depth": 2,
+                "id": "parsefiles"
+              },
+              {
+                "title": "render",
+                "depth": 2,
+                "id": "render"
+              }
+            ]
+          },
+          {
+            "title": "Schema",
+            "source": "docs/schema.md",
+            "url": "schema.html",
+            "slug": "schema",
+            "headings": [
+              {
+                "title": "Sample output",
+                "depth": 2,
+                "id": "sample-output"
+              },
+              {
+                "title": "Files",
+                "depth": 2,
+                "id": "files"
+              },
+              {
+                "title": "Sections",
+                "depth": 2,
+                "id": "sections"
+              },
+              {
+                "title": "Parts",
+                "depth": 2,
+                "id": "parts"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "Styledown",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Notice",
+          "depth": 2,
+          "id": "notice"
+        },
+        {
+          "title": "CLI usage",
+          "depth": 2,
+          "id": "cli-usage"
+        },
+        {
+          "title": "Thanks",
+          "depth": 2,
+          "id": "thanks"
+        }
+      ]
+    },
+    "api.html": {
+      "source": "docs/api.md",
+      "title": "API",
+      "slug": "api",
+      "headings": [
+        {
+          "title": "parse",
+          "depth": 2,
+          "id": "parse"
+        },
+        {
+          "title": "parseFiles",
+          "depth": 2,
+          "id": "parsefiles"
+        },
+        {
+          "title": "render",
+          "depth": 2,
+          "id": "render"
+        }
+      ]
+    },
+    "schema.html": {
+      "source": "docs/schema.md",
+      "title": "Schema",
+      "slug": "schema",
+      "headings": [
+        {
+          "title": "Sample output",
+          "depth": 2,
+          "id": "sample-output"
+        },
+        {
+          "title": "Files",
+          "depth": 2,
+          "id": "files"
+        },
+        {
+          "title": "Sections",
+          "depth": 2,
+          "id": "sections"
+        },
+        {
+          "title": "Parts",
+          "depth": 2,
+          "id": "parts"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/api.md": "api.html",
+    "docs/schema.md": "schema.html",
+    "docs/docpress.json": "docpress.json"
+  }
+}

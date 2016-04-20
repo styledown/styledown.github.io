@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>API</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-api">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/styledown/styledown" data-title="styledown/styledown" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="api-reference">API Reference</h1>
+<p>Styledown provides a programatic API to allow you to consume your styleguides from within your web app.</p>
+<pre><code class="lang-js"><span class="pl-k">var</span> styledown = <span class="pl-c1">require</span>(<span class="pl-s">&apos;styledown&apos;</span>)
+</code></pre>
+<h2 id="parse">parse</h2>
+<blockquote>
+<p><code>styledown.parse(files, options)</code></p>
+</blockquote>
+<p>Parses synchronously from given inputs. This is useful for rendering your styleguide with your own views.</p>
+<p>The output is a JSON object; see <a href="schema.html">Schema</a> for details on how it looks like.</p>
+<pre><code class="lang-js">styledown.parse([
+  { name: <span class="pl-s">&apos;components.md&apos;</span>, data: <span class="pl-s">&apos;# This is Markdown data&apos;</span> },
+  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, data: <span class="pl-s">&apos;...&apos;</span> },
+])
+</code></pre>
+<h2 id="parsefiles">parseFiles</h2>
+<blockquote>
+<p><code>styledown.parseFiles(files, options)</code></p>
+</blockquote>
+<p>Reads files asynchronously from disk then parses them. Returns a promise.</p>
+<pre><code class="lang-js">styledown.parseFiles([
+  <span class="pl-s">&apos;./styleguides/components.md&apos;</span>,
+  <span class="pl-s">&apos;./styleguides/buttons.md&apos;</span>
+])
+.then(result =&gt; { ... })
+</code></pre>
+<h2 id="render">render</h2>
+<blockquote>
+<p><code>styledown.render(data, options)</code></p>
+</blockquote>
+<p>Renders to HTML, where <code>data</code> is assumed to be the output of <a href="#styledownparse">styledown.parse</a>.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="index.html"><span class="title">Styledown</span></a></div>
+          <div class="right"><a href="schema.html"><span class="label">Next: </span><span class="title">Schema</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title  link-index">Styledown</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Users guide</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="api.html" class="link title -active link-api">API</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#parse" class="hlink link-parse">parse</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#parsefiles" class="hlink link-parsefiles">parseFiles</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#render" class="hlink link-render">render</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item -level-2"><a href="schema.html" class="link title  link-schema">Schema</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

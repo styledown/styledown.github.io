@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>Schema</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-schema">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/styledown/styledown" data-title="styledown/styledown" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="output-schema">Output schema</h1>
+<p>Given this input:</p>
+<pre><code># Components
+
+### Top header
+This is the main header partial.
+
+``` example.haml
+= render &apos;components/top_header&apos;
+```
+</code></pre>
+<h2 id="sample-output">Sample output</h2>
+<p>You&#x2019;ll get this JSON output:</p>
+<pre><code class="lang-json">{ &quot;<span class="hljs-attr">files</span>&quot;:
+  { &quot;<span class="hljs-attr">components.md</span>&quot;:
+    { &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Components&quot;</span>,
+      &quot;<span class="hljs-attr">name</span>&quot;: <span class="pl-s">&quot;components.md&quot;</span>,
+      &quot;<span class="hljs-attr">sections</span>&quot;:
+        { &quot;<span class="hljs-attr">components</span>&quot;:
+          { &quot;<span class="hljs-attr">id</span>&quot;: <span class="pl-s">&quot;components&quot;</span>,
+            &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Components&quot;</span>,
+            &quot;<span class="hljs-attr">depth</span>&quot;: <span class="hljs-number">1</span> },
+          &quot;<span class="hljs-attr">top-header</span>&quot;:
+          { &quot;<span class="hljs-attr">id</span>&quot;: <span class="pl-s">&quot;top-header&quot;</span>,
+            &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Top header&quot;</span>,
+            &quot;<span class="hljs-attr">depth</span>&quot;: <span class="hljs-number">3</span>,
+            &quot;<span class="hljs-attr">parts</span>&quot;:
+            { &quot;<span class="hljs-attr">s1</span>&quot;:
+              { &quot;<span class="hljs-attr">type</span>&quot;: <span class="pl-s">&quot;text&quot;</span>,
+                &quot;<span class="hljs-attr">language</span>&quot;: <span class="pl-s">&quot;html&quot;</span>,
+                &quot;<span class="hljs-attr">content</span>&quot;: <span class="pl-s">&quot;&lt;p&gt;This is the main header partial.&lt;/p&gt;&quot;</span> },
+              &quot;<span class="hljs-attr">s2</span>&quot;:
+              { &quot;<span class="hljs-attr">type</span>&quot;: <span class="pl-s">&quot;example&quot;</span>,
+                &quot;<span class="hljs-attr">language</span>&quot;: <span class="pl-s">&quot;haml&quot;</span>,
+                &quot;<span class="hljs-attr">content</span>&quot;: <span class="pl-s">&quot;= render &apos;components/top_header&apos;&quot;</span> } } } } } } }
+</code></pre>
+<p>It breaks down like so:</p>
+<ul>
+<li>A styleguide has many <a href="#files">Files</a>.</li>
+<li>A file has many <a href="#sections">Sections</a>.</li>
+<li>A section has many <a href="#parts">Parts</a>.</li>
+</ul>
+<h2 id="files">Files</h2>
+<blockquote>
+<p><code>files</code></p>
+</blockquote>
+<p><code>files</code> is a Dictionary where the key is the filename (eg, <em>&#x2018;<a href="http://components.md">components.md</a>&#x2019;</em>) and the value is the file.
+A file has the following fields:</p>
+<ul>
+<li><code>name</code> - The filename</li>
+<li><code>title</code> - The title, taken from the first <em>H1</em> elemnet.</li>
+<li><code>sections</code> - a Dictionary</li>
+</ul>
+<h2 id="sections">Sections</h2>
+<blockquote>
+<p><code>files.*.sections</code></p>
+</blockquote>
+<p><code>sections</code> is a Dictionary where the key is the section ID, and the value is the section details. A section starts from a H1, H2, or H3 heading, followed the other blocks that follow it.</p>
+<ul>
+<li><code>id</code></li>
+<li><code>title</code> - The title, taken from the <em>H2</em> or <em>H3</em> element that started the section.</li>
+<li><code>depth</code> - <em>1</em>, <em>2</em> or <em>3</em>.</li>
+<li><code>parts</code> - a Dictionary</li>
+</ul>
+<h2 id="parts">Parts</h2>
+<blockquote>
+<p><code>files.*.sections.*.parts</code></p>
+</blockquote>
+<p><code>parts</code> is a Dictionary where the key is the Part ID, and the value is the part details.</p>
+<ul>
+<li><code>id</code></li>
+<li><code>type</code> - Can be <em>&#x2018;example&#x2019;</em>, <em>&#x2018;text&#x2019;</em>, or <em>&#x2018;code&#x2019;</em>.</li>
+<li><code>language</code></li>
+<li><code>content</code></li>
+<li><code>source</code> - If it was transpiled, the original source will be stored here.</li>
+</ul>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="api.html"><span class="title">API</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title  link-index">Styledown</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Users guide</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API</a>
+                </li>
+                <li class="menu-item -level-2"><a href="schema.html" class="link title -active link-schema">Schema</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#sample-output" class="hlink link-sample-output">Sample output</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#files" class="hlink link-files">Files</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#sections" class="hlink link-sections">Sections</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#parts" class="hlink link-parts">Parts</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>
