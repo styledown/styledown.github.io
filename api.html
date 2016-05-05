@@ -45,9 +45,21 @@
 </code></pre>
 <h2 id="render">render</h2>
 <blockquote>
-<p><code>styledown.render(data, options)</code></p>
+<p><code>styledown.render(data, filename, options)</code></p>
 </blockquote>
-<p>Renders to HTML, where <code>data</code> is assumed to be the output of <a href="#styledownparse">styledown.parse</a>.</p>
+<p>Renders to HTML, where <code>data</code> is assumed to be the output of <a href="#styledownparse">styledown.parse</a>. The parameter <code>filename</code> is the filename to be rendered. The result is HTML as a string.</p>
+<pre><code class="lang-js"><span class="pl-k">var</span> data = styledown.parse([
+  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, data: <span class="pl-c">/*snip*/</span> }
+])
+
+<span class="pl-k">var</span> result = styledown.render(data, filename)
+</code></pre>
+<p>These options may be given (all optional):</p>
+<ul>
+<li><code>layout</code> <em>(String)</em> - the contents of the layout to be used. Can be an <a href="https://www.npmjs.com/package/ejs">ejs</a> or <a href="https://www.npmjs.com/package/jade">jade</a> template, or anything supported by <a href="https://www.npmjs.com/package/jstransformer">jstransformer</a>.</li>
+<li><code>layoutEngine</code> <em>(String)</em> - the jstransformer engine to use; defaults to <code>&apos;ejs&apos;</code>.</li>
+</ul>
+<p>You can use custom jstransformer engines by specifying <code>layoutEngine</code>. By overriding it, tt&#x2019;s assumed to be loading the npm package <code>jstransformer-&lt;engine&gt;</code>.</p>
 
         </div>
         <div class="footer-nav">
