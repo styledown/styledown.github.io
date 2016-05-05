@@ -76,6 +76,11 @@
                 "title": "Parts",
                 "depth": 2,
                 "id": "parts"
+              },
+              {
+                "title": "Table of Contents",
+                "depth": 2,
+                "id": "table-of-contents"
               }
             ]
           }
@@ -152,6 +157,11 @@
           "title": "Parts",
           "depth": 2,
           "id": "parts"
+        },
+        {
+          "title": "Table of Contents",
+          "depth": 2,
+          "id": "table-of-contents"
         }
       ]
     }

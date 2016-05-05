@@ -30,28 +30,29 @@ This is the main header partial.
 </code></pre>
 <h2 id="sample-output">Sample output</h2>
 <p>You&#x2019;ll get this JSON output:</p>
-<pre><code class="lang-json">{ &quot;<span class="hljs-attr">files</span>&quot;:
-  { &quot;<span class="hljs-attr">components.md</span>&quot;:
-    { &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Components&quot;</span>,
-      &quot;<span class="hljs-attr">name</span>&quot;: <span class="pl-s">&quot;components.md&quot;</span>,
-      &quot;<span class="hljs-attr">sections</span>&quot;:
-        { &quot;<span class="hljs-attr">components</span>&quot;:
-          { &quot;<span class="hljs-attr">id</span>&quot;: <span class="pl-s">&quot;components&quot;</span>,
-            &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Components&quot;</span>,
-            &quot;<span class="hljs-attr">depth</span>&quot;: <span class="hljs-number">1</span> },
-          &quot;<span class="hljs-attr">top-header</span>&quot;:
-          { &quot;<span class="hljs-attr">id</span>&quot;: <span class="pl-s">&quot;top-header&quot;</span>,
-            &quot;<span class="hljs-attr">title</span>&quot;: <span class="pl-s">&quot;Top header&quot;</span>,
-            &quot;<span class="hljs-attr">depth</span>&quot;: <span class="hljs-number">3</span>,
-            &quot;<span class="hljs-attr">parts</span>&quot;:
-            { &quot;<span class="hljs-attr">s1</span>&quot;:
-              { &quot;<span class="hljs-attr">type</span>&quot;: <span class="pl-s">&quot;text&quot;</span>,
-                &quot;<span class="hljs-attr">language</span>&quot;: <span class="pl-s">&quot;html&quot;</span>,
-                &quot;<span class="hljs-attr">content</span>&quot;: <span class="pl-s">&quot;&lt;p&gt;This is the main header partial.&lt;/p&gt;&quot;</span> },
-              &quot;<span class="hljs-attr">s2</span>&quot;:
-              { &quot;<span class="hljs-attr">type</span>&quot;: <span class="pl-s">&quot;example&quot;</span>,
-                &quot;<span class="hljs-attr">language</span>&quot;: <span class="pl-s">&quot;haml&quot;</span>,
-                &quot;<span class="hljs-attr">content</span>&quot;: <span class="pl-s">&quot;= render &apos;components/top_header&apos;&quot;</span> } } } } } } }
+<pre><code class="lang-json">{ &quot;files&quot;:
+  { &quot;components.md&quot;:
+    { &quot;title&quot;: &quot;Components&quot;,
+      &quot;name&quot;: &quot;components.md&quot;,
+      &quot;sections&quot;:
+        { &quot;components&quot;:
+          { &quot;id&quot;: &quot;components&quot;,
+            &quot;title&quot;: &quot;Components&quot;,
+            &quot;depth&quot;: 1 },
+          &quot;top-header&quot;:
+          { &quot;id&quot;: &quot;top-header&quot;,
+            &quot;title&quot;: &quot;Top header&quot;,
+            &quot;depth&quot;: 3,
+            &quot;parts&quot;:
+            { &quot;s1&quot;:
+              { &quot;type&quot;: &quot;text&quot;,
+                &quot;language&quot;: &quot;html&quot;,
+                &quot;content&quot;: &quot;&lt;p&gt;This is the main header partial.&lt;/p&gt;&quot; },
+              &quot;s2&quot;:
+              { &quot;type&quot;: &quot;example&quot;,
+                &quot;language&quot;: &quot;haml&quot;,
+                &quot;content&quot;: &quot;= render &apos;components/top_header&apos;&quot; } } } } } },
+  &quot;toc&quot;: { ...  } }
 </code></pre>
 <p>It breaks down like so:</p>
 <ul>
@@ -93,6 +94,18 @@ A file has the following fields:</p>
 <li><code>content</code></li>
 <li><code>source</code> - If it was transpiled, the original source will be stored here.</li>
 </ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<p>A table of contents will be generated when one of the files is called <code>README.md</code>. It looks like this:</p>
+<pre><code class="lang-js">{ sections:
+   [ { title: <span class="pl-s">&apos;Home&apos;</span>,
+       source: <span class="pl-s">&apos;index.md&apos;</span>,
+       url: <span class="pl-s">&apos;index.html&apos;</span> },
+     { title: <span class="pl-s">&apos;Document&apos;</span>,
+       sections:
+        [ { title: <span class="pl-s">&apos;Index&apos;</span>,
+            source: <span class="pl-s">&apos;index.md&apos;</span>,
+            url: <span class="pl-s">&apos;index.html&apos;</span> } ] } ] }
+</code></pre>
 
         </div>
         <div class="footer-nav">
@@ -117,6 +130,8 @@ A file has the following fields:</p>
                     <li class="heading-item -depth-2"><a href="#sections" class="hlink link-sections">Sections</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#parts" class="hlink link-parts">Parts</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#table-of-contents" class="hlink link-table-of-contents">Table of Contents</a>
                     </li>
                   </ul>
                 </li>
