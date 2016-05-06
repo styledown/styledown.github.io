@@ -26,17 +26,22 @@
 <p><code>styledown.parse(files, options)</code></p>
 </blockquote>
 <p>Parses synchronously from given inputs. This is useful for rendering your styleguide with your own views.</p>
+<p>The parameter <code>files</code> is an array of objects. Each object should have these keys:</p>
+<ul>
+<li><code>name</code> <em>(String)</em> - The source filename.</li>
+<li><code>contents</code> <em>(String)</em> - The raw contents of the file.</li>
+</ul>
 <p>The output is a JSON object; see <a href="schema.html">Schema</a> for details on how it looks like.</p>
 <pre><code class="lang-js">styledown.parse([
-  { name: <span class="pl-s">&apos;components.md&apos;</span>, data: <span class="pl-s">&apos;# This is Markdown data&apos;</span> },
-  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, data: <span class="pl-s">&apos;...&apos;</span> },
+  { name: <span class="pl-s">&apos;components.md&apos;</span>, contents: <span class="pl-s">&apos;# This is Markdown data&apos;</span> },
+  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, contents: <span class="pl-s">&apos;...&apos;</span> },
 ])
 </code></pre>
 <h2 id="parsefiles">parseFiles</h2>
 <blockquote>
 <p><code>styledown.parseFiles(files, options)</code></p>
 </blockquote>
-<p>Reads files asynchronously from disk then parses them. Returns a promise.</p>
+<p>Reads files asynchronously from disk then parses them. Returns a promise, which yields the same data structure as <a href="#styledownparse">styledown.parse</a>. See <a href="schema.html">Schema</a> for details on how it looks like.</p>
 <pre><code class="lang-js">styledown.parseFiles([
   <span class="pl-s">&apos;./styleguides/components.md&apos;</span>,
   <span class="pl-s">&apos;./styleguides/buttons.md&apos;</span>
@@ -49,7 +54,7 @@
 </blockquote>
 <p>Renders to HTML, where <code>data</code> is assumed to be the output of <a href="#styledownparse">styledown.parse</a>. The parameter <code>filename</code> is the filename to be rendered. The result is HTML as a string.</p>
 <pre><code class="lang-js"><span class="pl-k">var</span> data = styledown.parse([
-  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, data: <span class="pl-c">/*snip*/</span> }
+  { name: <span class="pl-s">&apos;buttons.md&apos;</span>, contents: <span class="pl-c">/*snip*/</span> }
 ])
 
 <span class="pl-k">var</span> result = styledown.render(data, filename)
@@ -58,8 +63,10 @@
 <ul>
 <li><code>layout</code> <em>(String)</em> - the contents of the layout to be used. Can be an <a href="https://www.npmjs.com/package/ejs">ejs</a> or <a href="https://www.npmjs.com/package/jade">jade</a> template, or anything supported by <a href="https://www.npmjs.com/package/jstransformer">jstransformer</a>.</li>
 <li><code>layoutEngine</code> <em>(String)</em> - the jstransformer engine to use; defaults to <code>&apos;ejs&apos;</code>.</li>
+<li><code>block</code> <em>(String)</em> - the block to render. Can be <em>&#x2018;body&#x2019;</em> (default)  or <em>&#x2018;menu&#x2019;</em>.</li>
 </ul>
 <p>You can use custom jstransformer engines by specifying <code>layoutEngine</code>. By overriding it, tt&#x2019;s assumed to be loading the npm package <code>jstransformer-&lt;engine&gt;</code>.</p>
+<p>If <code>block: &apos;menu&apos;</code> is passed through the options, it will return the markup for the sidebar menu.</p>
 
         </div>
         <div class="footer-nav">
